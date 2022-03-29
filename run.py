@@ -51,7 +51,7 @@ else:
             ['cd ./{0}/code && make'.format(programs[program_to_run][0])],
             stdout=devnull, stderr=subprocess.STDOUT, shell=True)
 
-    mpirun = os.environ.get('MPIRUN', 'mpirun')
+    mpirun = os.environ.get('MPIRUN', 'mpirun --allow-run-as-root')
     hosts = '' if not os.environ.get('MPI_HOSTS') else '-f {0}'.format(os.environ.get('MPI_HOSTS'))
 
     sys_call = '{0} -n {1} {2} ./{3}/code/{4}'.format(
